@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this standard, please cite it as below."
+title: "AI Recommendation Verification Standard (AIRVS)"
+abstract: >-
+  An open, version-controlled, peer-reviewable standard for evaluating
+  AI-generated investment recommendations across six process axes with
+  mandatory evidence, three-tier macro/micro coherence, four-point outcome
+  time-series (D+30/60/90/180), and a five-tier verdict label vocabulary.
+  The standard defines the label vocabulary and the disclosure/lock rules;
+  the algorithm that maps measurements to a label is implementer-defined
+  and must be pre-published and version-locked per evaluator.
+authors:
+  - family-names: Kim
+    given-names: Mincheol
+    email: mckim890@gmail.com
+    affiliation: MC AI Labs
+version: 1.0.0
+date-released: 2026-05-26
+license: CC-BY-4.0
+type: software
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20391984
+    description: "v1.0.0 release DOI (Zenodo)"
+repository-code: "https://github.com/emceeKim/AI-RVS"
+url: "https://doi.org/10.5281/zenodo.20391984"
+keywords:
+  - AI evaluation
+  - investment recommendation
+  - methodology standard
+  - falsifiability
+  - peer review
+  - large language model
+  - hallucination detection
+  - open standard
+  - verdict label
+  - decision rule

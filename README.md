@@ -1,8 +1,12 @@
 # AI Recommendation Verification Standard (AIRVS)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20391984.svg)](https://doi.org/10.5281/zenodo.20391984)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
 > An open, version-controlled, peer-reviewable standard for evaluating AI-generated investment recommendations. The standard defines (1) six process axes with mandatory evidence, (2) macro/micro coherence in three tiers, (3) outcome time-series at four time points, and (4) a five-tier verdict label vocabulary. The standard defines *how to measure* and *what the labels mean*; the algorithm that maps measurements to a label is **implementer-defined** (each evaluator publishes their own decision rule). A reference implementation by the maintainer is available as a separate repository (`mc-ai-labs-airvs-implementation/`).
 
 **Current version**: `v1.0.0` — first public release
+**DOI**: [10.5281/zenodo.20391984](https://doi.org/10.5281/zenodo.20391984)
 **License**: [CC BY 4.0](./LICENSE)
 **Maintainer**: MC AI Labs — Mincheol Kim (`mckim890@gmail.com`)
 **Repository purpose**: Public, citable, falsifiable standard for third-party AI recommendation review. Distinct from any specific evaluator's implementation.
@@ -117,4 +121,60 @@ If your recommendation is about to be evaluated under this standard, you are ent
 
 ## Quick start (for peer reviewers)
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). In short: open an issue tagged `peer-review` with your review attached. Reviews of any length are welcome; even one-page critiques pointing at a single defect are useful. All accepted peer reviews are committed to `PEER-REVIEWS/` with attribution, unless the reviewer r
+See [CONTRIBUTING.md](./CONTRIBUTING.md). In short: open an issue tagged `peer-review` with your review attached. Reviews of any length are welcome; even one-page critiques pointing at a single defect are useful. All accepted peer reviews are committed to `PEER-REVIEWS/` with attribution, unless the reviewer requests anonymity, in which case only the date and the substance are committed.
+
+---
+
+## Scope: L1 only
+
+This standard is for **L1 evaluations** — third-party review of someone else's recommendation. It is deliberately not applied by an evaluator to their own recommendations (a separate "L2 self-assessment" methodology is in development and will be released in its own repository; using this standard to grade one's own recommendations defeats the entire purpose of the design). See `core.md` §2 for the full L1 / L2 split and its rationale.
+
+---
+
+## Known limitations (v1.0.x patch candidates)
+
+These are catalogued openly because a stable release should disclose its known gaps:
+
+1. **External evaluator pool** — `core.md` §A.11 requires inter-rater participation above a public-influence threshold, but the actual evaluator pool is not yet constituted.
+2. **Notification channel for the seven-day rebuttal procedure** — email / DM / formal notarization standards are pending legal advice.
+3. **Annex A.6 sampling rule** for evaluations citing > 10 sources — already patched in `annex-a-ai.md` for the next PATCH release.
+4. **Verdict "Hallucinated" label phrasing** — the English term is operationally precise but legally pointed; a softer alternative is under consideration for `v1.0.1`.
+5. **Worked decision-rule template** — for evaluators starting their own implementation from scratch.
+
+See `core.md` §12 for the full backlog and `PEER-REVIEWS/internal-3-persona-review.md` for the patch-level fixes surfaced by the author's own pre-review.
+
+---
+
+## Citation
+
+If you use this standard in academic work, public commentary, or in evaluating others' content, please cite as:
+
+> Kim, Mincheol (2026). *AI Recommendation Verification Standard (AIRVS), v1.0.0*. MC AI Labs. **DOI: [10.5281/zenodo.20391984](https://doi.org/10.5281/zenodo.20391984)**. Repository: https://github.com/emceeKim/AI-RVS. CC BY 4.0.
+
+The DOI is the most stable citation target — it persists even if the repository moves. For commit-level precision, append the current commit hash. Frontmatter inside each file additionally pins the `methodology_version`.
+
+A machine-readable citation is available in [`CITATION.cff`](./CITATION.cff) — GitHub renders a "Cite this repository" button in the right sidebar that exports BibTeX and APA formats with one click.
+
+### Permanent identifiers
+
+| Identifier | Value |
+|---|---|
+| **DOI** (this version) | [`10.5281/zenodo.20391984`](https://doi.org/10.5281/zenodo.20391984) |
+| **Zenodo record** | https://zenodo.org/records/20391984 |
+| **GitHub release** | https://github.com/emceeKim/AI-RVS/releases/tag/v1.0.0 |
+| **Repository** | https://github.com/emceeKim/AI-RVS |
+
+---
+
+## Contact
+
+- **Author**: Mincheol Kim — `mckim890@gmail.com`
+- **Brand**: MC AI Labs
+- **Author's publishing jurisdiction**: Republic of Korea. The methodology itself is jurisdiction-neutral; this disclosure is provided so readers can assess the author's specific legal exposure context (see `core.md` §9 and `WHY.md`).
+- **Issues**: please use GitHub Issues with the appropriate label (`peer-review`, `defect`, `clarification`, `rebuttal`)
+
+---
+
+## A note on what this is not
+
+This standard does not certify recommendations as profitable. It does not predict markets. It does not replace due diligence. It is a record of methodology and outcome that allows a reader to decide whether a given recommender is worth following. A 🟢 Trustworthy label means the methodology was sound and the 90-day outcome was non-negative; it does not mean the next recommendation from the same source will also work out. Conversely, a 🔴 Hallucinated label is a statement about a specific recommendation having cited non-existent material — it is not a general indictment of the recommender. Please read the verdicts as what they are: per-recommendation records, not reputation scores.
