@@ -1,0 +1,29 @@
+name: AIRVS verification intake
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  intake:
+    # SECURITY GATE: only the repo owner's issues are processed; everyone else is ignored.
+    if: github.event.issue.user.login == 'emceeKim' && contains(join(github.event.issue.labels.*.name, ','), 'airvs-verification')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm init -y >/dev/null 2>&1 && npm i @neondatabase/serverless@0.10.4 >/dev/null 2>&1
+      - name: Parse, score (decision-rule v1.0.0) and insert
+        env:
+          NEON_INSERT_URL: ${{ secrets.NEON_INSERT_URL }}   # INSERT-only role — never the owner key
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          SITE_BASE: https://www.ai-rvs.com
+        run: node scripts/intake.mjs
