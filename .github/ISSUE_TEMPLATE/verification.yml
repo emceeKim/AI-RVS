@@ -110,7 +110,7 @@ body:
 
   - type: dropdown
     id: coi
-    attributes: { label: "E1 — Evaluator conflict of interest", description: "disclosed = automatic one-tier downgrade", options: ["none", "disclosed"] }
+    attributes: { label: "E1 — Evaluator conflict of interest", description: "disclosed = automatic one-tier downgrade", options: ["no conflict", "disclosed"] }
     validations: { required: true }
   - type: textarea
     id: summary
