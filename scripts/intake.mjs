@@ -103,7 +103,7 @@ async function main() {
     values (${id}, ${f.R1}, ${f.R3}, ${f.R2}, ${verdict}, ${JSON.stringify(process6)}::jsonb,
             ${C}, ${JSON.stringify(outcome)}::jsonb,
             ${phase === "confirmed" ? "Confirmed" : "Provisional · D+0"},
-            ${f.S1 || ""}, ${"v1.1.0"}, ${phase === "confirmed" ? "confirmed" : "provisional"}, ${false})`;
+            ${f.S1 || ""}, ${"v1.2.0"}, ${phase === "confirmed" ? "confirmed" : "provisional"}, ${false})`;
 
   const emoji = { trustworthy: "🟢", acceptable: "🔵", questionable: "🟡", unreliable: "🟠", hallucinated: "🔴" }[verdict];
   await gh(`issues/${N}/comments`, "POST", {
