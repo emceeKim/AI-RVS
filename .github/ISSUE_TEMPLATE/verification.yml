@@ -1,0 +1,125 @@
+name: AIRVS Verification
+description: Submit a new L1 verification (owner only — non-owner submissions are ignored by the intake bot)
+title: "Verification: <ASSET> — <RECOMMENDER>"
+labels: ["airvs-verification"]
+body:
+  - type: input
+    id: recommender
+    attributes: { label: "R1 — Recommender (model/engine + vendor)", placeholder: "e.g. EquBot / IBM Watson" }
+    validations: { required: true }
+  - type: input
+    id: asset
+    attributes: { label: "R2 — Asset / ticker", placeholder: "e.g. AIEQ" }
+    validations: { required: true }
+  - type: input
+    id: rec_date
+    attributes: { label: "R3 — Recommendation date (YYYY-MM-DD)", placeholder: "2017-10-17" }
+    validations: { required: true }
+  - type: dropdown
+    id: subject_type
+    attributes: { label: "R4 — Subject type", options: ["llm-recommendation (Template L)", "ai-managed-fund (Template F)"] }
+    validations: { required: true }
+  - type: input
+    id: source_url
+    attributes: { label: "R5 — Primary source URL" }
+    validations: { required: true }
+
+  - type: dropdown
+    id: axis1
+    attributes: { label: "A1 — Axis 1 Data Source", options: ["Pass", "Fail"] }
+    validations: { required: true }
+  - type: input
+    id: ev1
+    attributes: { label: "A1e — Axis 1 evidence (quote + source location)" }
+    validations: { required: true }
+  - type: dropdown
+    id: axis2
+    attributes: { label: "A2 — Axis 2 Reasoning Logic", options: ["Pass", "Fail"] }
+    validations: { required: true }
+  - type: input
+    id: ev2
+    attributes: { label: "A2e — Axis 2 evidence" }
+    validations: { required: true }
+  - type: dropdown
+    id: axis3
+    attributes: { label: "A3 — Axis 3 Counter-Scenario", options: ["Pass", "Fail"] }
+    validations: { required: true }
+  - type: input
+    id: ev3
+    attributes: { label: "A3e — Axis 3 evidence" }
+    validations: { required: true }
+  - type: dropdown
+    id: axis4
+    attributes: { label: "A4 — Axis 4 Timing", options: ["Pass", "Fail"] }
+    validations: { required: true }
+  - type: input
+    id: ev4
+    attributes: { label: "A4e — Axis 4 evidence" }
+    validations: { required: true }
+  - type: dropdown
+    id: axis5
+    attributes: { label: "A5 — Axis 5 Accuracy / Hallucination", options: ["Pass", "Fail"] }
+    validations: { required: true }
+  - type: input
+    id: ev5
+    attributes: { label: "A5e — Axis 5 evidence" }
+    validations: { required: true }
+  - type: dropdown
+    id: h_flag
+    attributes: { label: "A5x — Axis 5 failed due to NON-EXISTENT source/ticker/figure?", description: "Yes = hard override to 🔴 Hallucinated", options: ["No", "Yes (hallucination override)"] }
+    validations: { required: true }
+  - type: dropdown
+    id: axis6
+    attributes: { label: "A6 — Axis 6 Causal Chain", options: ["Pass", "Fail"] }
+    validations: { required: true }
+  - type: input
+    id: ev6
+    attributes: { label: "A6e — Axis 6 evidence" }
+    validations: { required: true }
+
+  - type: dropdown
+    id: macro
+    attributes: { label: "C1 — Macro coherence", options: ["Sufficient", "Partial", "Missing"] }
+    validations: { required: true }
+  - type: dropdown
+    id: micro
+    attributes: { label: "C2 — Micro coherence", options: ["Sufficient", "Partial", "Missing"] }
+    validations: { required: true }
+
+  - type: dropdown
+    id: phase
+    attributes: { label: "O1 — Phase", options: ["provisional (D+0)", "confirmed (D+90 / fund 1y+)"] }
+    validations: { required: true }
+  - type: input
+    id: ret90
+    attributes: { label: "O2 — Return at D+90 (or fund annualized), % — blank if provisional", placeholder: "9.09" }
+  - type: input
+    id: exc90
+    attributes: { label: "O3 — Excess vs benchmark, pp — blank if provisional", placeholder: "-4" }
+  - type: dropdown
+    id: stop
+    attributes: { label: "O4 — Stop-loss breached by D+90?", options: ["No / N-A", "Yes"] }
+    validations: { required: true }
+  - type: input
+    id: benchmark
+    attributes: { label: "O5 — Benchmark", placeholder: "SPY (S&P 500)" }
+    validations: { required: true }
+  - type: textarea
+    id: outcome_notes
+    attributes: { label: "O6 — Outcome notes (mdd, horizon, correlation, cost drag, …)" }
+
+  - type: dropdown
+    id: coi
+    attributes: { label: "E1 — Evaluator conflict of interest", description: "disclosed = automatic one-tier downgrade", options: ["none", "disclosed"] }
+    validations: { required: true }
+  - type: textarea
+    id: summary
+    attributes: { label: "S1 — Public summary (will be shown on the site)" }
+    validations: { required: true }
+  - type: checkboxes
+    id: l1
+    attributes:
+      label: "L1 confirmation"
+      options:
+        - label: "This is an EXTERNAL (L1) recommendation — not my own (self-grading L2 is out of scope)."
+          required: true
